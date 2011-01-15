@@ -79,8 +79,8 @@ cp $V2/vf/* $V1/vf
 
 # modify map files to reflect changes of enc files
 cd $V1/dvips/
-sed 's/Encoding-\(..\)/Encoding-\1v1000/g;s/${FONT}-\(a.\)/${FONT}-\1v1000/g;s/Medium\(.\{0,6\}\) "${FONT}-Base-Encoding-\(..\)v1000 ReEncodeFont" <\[base-${FONT}-..v1000.enc/Medium\1 "${FONT}-Base-Encoding-\2v2000 ReEncodeFont" <\[base-${FONT}-\2v2000.enc/g' <${FONT}.map > v1.map
-sed 's/Encoding-\(..\)/Encoding-\1v1000/g;s/${FONT}-\(a.\)/${FONT}-\1v1000/g;s/Medium\(.\{0,6\}\) "${FONT}-Base-Encoding-\(..\)v1000 ReEncodeFont" <\[base-${FONT}-..v1000.enc/Medium\1 "${FONT}-Base-Encoding-\2v2000 ReEncodeFont" <\[base-${FONT}-\2v2000.enc/g' <tempv2.map > v2.map
+sed 's/Encoding-\(..\)/Encoding-\1v1000/g;s/MinionPro-\(a.\)/MinionPro-\1v1000/g;s/Medium\(.\{0,6\}\) "MinionPro-Base-Encoding-\(..\)v1000 ReEncodeFont" <\[base-MinionPro-..v1000.enc/Medium\1 "MinionPro-Base-Encoding-\2v2000 ReEncodeFont" <\[base-MinionPro-\2v2000.enc/g' <MinionPro.map > v1.map
+sed 's/Encoding-\(..\)/Encoding-\1v1000/g;s/MinionPro-\(a.\)/MinionPro-\1v1000/g;s/Medium\(.\{0,6\}\) "MinionPro-Base-Encoding-\(..\)v1000 ReEncodeFont" <\[base-MinionPro-..v1000.enc/Medium\1 "MinionPro-Base-Encoding-\2v2000 ReEncodeFont" <\[base-MinionPro-\2v2000.enc/g' <tempv2.map > v2.map
 
 # join map files
 cat v1.map v2.map > $FONT.map
