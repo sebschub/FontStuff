@@ -1,0 +1,101 @@
+diff --git a/fontinst/MinionPro/make-oml-fullfamily-opticals.tex b/fontinst/MinionPro/make-oml-fullfamily-opticals.tex
+index 8745c48..3768373 100644
+--- a/fontinst/MinionPro/make-oml-fullfamily-opticals.tex
++++ b/fontinst/MinionPro/make-oml-fullfamily-opticals.tex
+@@ -17,12 +17,8 @@
+ \installfonts
+   \installopt{Capt}{7}{Mixed}{l1-}
+   \installopt{Capt}{7}{Mixed}{}
+-  \installopt{Subh}{12}{Mixed}{}
+-  \installopt{Disp}{12}{Mixed}{}
+   \installopt{Capt}{7}{French}{l1-}
+   \installopt{Capt}{7}{French}{}
+-  \installopt{Subh}{12}{French}{}
+-  \installopt{Disp}{12}{French}{}
+ \endinstallfonts
+ 
+ \bye
+diff --git a/scripts/makeall b/scripts/makeall
+index ec5c763..953f98e 100755
+--- a/scripts/makeall
++++ b/scripts/makeall
+@@ -51,7 +51,4 @@ then
+   exit 1
+ fi
+ 
+-(cd fontinst; ../scripts/makeint $ffamily; ../scripts/makeoml $ffamily)
+-
+-(cd tex; latex $ffamily.ins; latex otfontdef.ins; latex fontaxes.ins; latex tabfigures.ins)
+-
++(cd fontinst; ../scripts/makeoml $ffamily)
+diff --git a/scripts/makeoml b/scripts/makeoml
+index 9920990..89dec28 100755
+--- a/scripts/makeoml
++++ b/scripts/makeoml
+@@ -55,26 +55,9 @@ run_fontinst() {
+   rm "$font"*.mtx MnSymbol*mtx
+ }
+ 
+-run_fontinst smallfamily Regular It Bold BoldIt
+-
+-if [ -e "../tfm/$font-Semibold-tosf-oml.tfm" ]
+-then
+-  run_fontinst medfamily Semibold SemiboldIt
+-fi
+-
+-if [ -e "../tfm/$font-Medium-tosf-oml.tfm" ]
+-then
+-  run_fontinst fullfamily Medium MediumIt
+-fi
+-
+-if [ -e "../tfm/$font-Capt-tosf-oml.tfm" ]
+-then
+-  run_fontinst medfamily-opticals Capt Subh Disp ItCapt ItSubh ItDisp SemiboldCapt SemiboldSubh SemiboldDisp SemiboldItCapt SemiboldItSubh SemiboldItDisp BoldCapt BoldSubh BoldDisp BoldItCapt BoldItSubh BoldItDisp
+-fi
+-
+ if [ -e "../tfm/$font-MediumCapt-tosf-oml.tfm" ]
+ then
+-  run_fontinst fullfamily-opticals MediumCapt MediumSubh MediumDisp MediumItCapt MediumItSubh MediumItDisp
++  run_fontinst fullfamily-opticals MediumCapt MediumItCapt
+ fi
+ 
+ for v in *.vpl
+diff --git a/scripts/maketfm b/scripts/maketfm
+index a9c38fd..ba6cd72 100755
+--- a/scripts/maketfm
++++ b/scripts/maketfm
+@@ -73,16 +73,6 @@ wide_spacing=false
+ glyph_list=""
+ base_font_list=""
+ 
+-if ! otfinfo -f otf/$font-Regular.otf | grep -q smcp
+-then 
+-  create_smallcaps=false
+-fi
+-
+-if ! otfinfo -f otf/$font-It.otf | grep -q Swash
+-then 
+-  create_swash=false
+-fi
+-
+ for opt in "$@"
+ do
+   case "$opt" in
+diff --git a/scripts/maketfm-MinionPro.cfg b/scripts/maketfm-MinionPro.cfg
+index 149a445..cffea3c 100755
+--- a/scripts/maketfm-MinionPro.cfg
++++ b/scripts/maketfm-MinionPro.cfg
+@@ -2,12 +2,7 @@
+ 
+ # Determine version of the fonts.
+ 
+-case $(otfinfo -v otf/$font-Regular.otf) in
+-  *";PS 001.000;"*) version=1;;
+-  *";PS 001.001;"*) version=2;;
+-  *";PS 002.000;"*) version=3;;
+-  *)                version=4;;
+-esac
++version=3
+ 
+ # Newer versions have different glyph names.
+ 

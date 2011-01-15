@@ -1,0 +1,10 @@
+Some helping test files and scripts for the FontPro package:
+
+* accentpost*: print letters with math accent to test their
+  positioning
+
+* makeall_2v.sh: run the FontPro scripts for two different otf font
+  versions of different weights/cuts of the same font. The script and
+  the patch MinionProv2.patch is written for MinionPro and two medium
+  cuts otf version 002.000 and the rest version 001.000. Both have to
+  be modified to the specific needs.
