@@ -1,0 +1,6 @@
+#!/bin/bash
+file=`basename $1 .mf`
+mf $1
+gftodvi $file.*gf
+dvips $file.dvi
+okular $file.ps
