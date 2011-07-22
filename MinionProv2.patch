@@ -82,18 +82,21 @@ index a9c38fd..ba6cd72 100755
  do
    case "$opt" in
 diff --git a/scripts/maketfm-MinionPro.cfg b/scripts/maketfm-MinionPro.cfg
-index 149a445..cffea3c 100755
+index 0823b04..2830463 100755
 --- a/scripts/maketfm-MinionPro.cfg
 +++ b/scripts/maketfm-MinionPro.cfg
-@@ -2,12 +2,7 @@
+@@ -2,15 +2,7 @@
  
  # Determine version of the fonts.
  
 -case $(otfinfo -v otf/$font-Regular.otf) in
 -  *";PS 001.000;"*) version=1;;
 -  *";PS 001.001;"*) version=2;;
--  *";PS 002.000;"*) version=3;;
--  *)                version=4;;
+-  *"Version 2.012;PS 002.000;"*) version=3;;
+-  *"Version 2.015;PS 002.000;"*) version=3;;
+-  *"Version 2.030;PS 002.000;"*) version=4;;
+-  *"Version 2.068;PS 002.000;"*) version=4;;
+-  *)                version=5;;
 -esac
 +version=3
  
