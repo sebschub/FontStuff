@@ -25,7 +25,7 @@ ${FONT}-ItDisp.otf      ${FONT}-SemiboldSubh.otf \
 ${FONT}-It.otf          ${FONT}-Subh.otf"
 
 # version 2 fonts
-V2F="${FONT}-MediumCapt.otf ${FONT}-MediumItCapt.otf"
+V2F="${FONT}-MediumCapt.otf ${FONT}-MediumItCapt.otf ${FONT}-Medium.otf ${FONT}-MediumIt.otf"
 
 # prepare temporary folders
 rm -rf $V1 $V2

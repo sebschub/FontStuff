@@ -32,7 +32,7 @@ diff --git a/scripts/makeoml b/scripts/makeoml
 index 9920990..89dec28 100755
 --- a/scripts/makeoml
 +++ b/scripts/makeoml
-@@ -55,26 +55,9 @@ run_fontinst() {
+@@ -55,26 +55,7 @@ run_fontinst() {
    rm "$font"*.mtx MnSymbol*mtx
  }
  
@@ -53,11 +53,12 @@ index 9920990..89dec28 100755
 -  run_fontinst medfamily-opticals Capt Subh Disp ItCapt ItSubh ItDisp SemiboldCapt SemiboldSubh SemiboldDisp SemiboldItCapt SemiboldItSubh SemiboldItDisp BoldCapt BoldSubh BoldDisp BoldItCapt BoldItSubh BoldItDisp
 -fi
 -
- if [ -e "../tfm/$font-MediumCapt-tosf-oml.tfm" ]
- then
+-if [ -e "../tfm/$font-MediumCapt-tosf-oml.tfm" ]
+-then
 -  run_fontinst fullfamily-opticals MediumCapt MediumSubh MediumDisp MediumItCapt MediumItSubh MediumItDisp
+-fi
++  run_fontinst fullfamily Medium MediumIt
 +  run_fontinst fullfamily-opticals MediumCapt MediumItCapt
- fi
  
  for v in *.vpl
 diff --git a/scripts/maketfm b/scripts/maketfm
