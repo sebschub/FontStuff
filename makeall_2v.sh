@@ -6,7 +6,7 @@ FONT=MinionPro
 TEMPF=~/temp/
 V1=$TEMPF/$FONT"V1"
 V2=$TEMPF/$FONT"V2"
-SCRIPTS=~/FontPro		# generating scripts
+SCRIPTS=~/fontdev/FontPro		# generating scripts
 OTF=~/otf/${FONT}		# font files
 
 # version 1 fonts
@@ -45,10 +45,10 @@ patch -d $V2/ -p1 < ${FONT}v2.patch
 
 # generate tex files
 cd $V1
-./scripts/makeall ${FONT} --pack=scripts/${FONT}-glyph-list-1.000
+./scripts/makeall ${FONT} --pack=scripts/${FONT}-glyph-list-1.011
 
 cd $V2
-./scripts/makeall ${FONT} --pack=scripts/${FONT}-glyph-list-2.000
+./scripts/makeall ${FONT} --pack=scripts/${FONT}-glyph-list-2.015
 
 
 # rename and modify encoding files

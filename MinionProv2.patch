@@ -19,13 +19,15 @@ diff --git a/scripts/makeall b/scripts/makeall
 index ec5c763..953f98e 100755
 --- a/scripts/makeall
 +++ b/scripts/makeall
-@@ -51,7 +51,4 @@ then
+@@ -51,9 +51,4 @@ then
    exit 1
  fi
  
--(cd fontinst; ../scripts/makeint $ffamily; ../scripts/makeoml $ffamily)
+-if $math; then
+-    (cd fontinst; ../scripts/makeint $ffamily; ../scripts/makeoml $ffamily)
+-fi
 -
--(cd tex; latex $ffamily.ins; latex otfontdef.ins; latex fontaxes.ins; latex tabfigures.ins)
+-(cd tex; latex $ffamily.ins; latex otfontdef.ins)
 -
 +(cd fontinst; ../scripts/makeoml $ffamily)
 diff --git a/scripts/makeoml b/scripts/makeoml
